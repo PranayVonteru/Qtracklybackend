@@ -53,7 +53,11 @@ namespace Demoproject.Services
             _logger.LogInformation("UserService initialized with encryption enabled.");
         }
 
-       
+
+        public (string Key, string IV) GetEncryptionKeys()
+        {
+            return (_encryptionKey, _encryptionIV);
+        }
 
 
 

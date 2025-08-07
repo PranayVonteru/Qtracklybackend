@@ -32,6 +32,6 @@ namespace Demoproject.Services.Interfaces
         Task<List<UserDepartmentDto>> GetAllUserDetailsAsync();
         Task<(UserDto, string)> GetUserDetailsAsyncNotification(string userId);
         Task<List<User>> GetManagerDetailsAsync();
-
+        (string Key, string IV) GetEncryptionKeys();
     }
 }

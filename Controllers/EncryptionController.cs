@@ -7,6 +7,7 @@ using System.Text;
 using System.IO;
 using System.Text.Json;
 using System.Collections.Generic;
+using Demoproject.Services.Interfaces;
 
 namespace Demoproject.Controllers
 {
@@ -17,14 +18,42 @@ namespace Demoproject.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IWebHostEnvironment _environment;
+        private readonly IUserService _userService;
 
-        public EncryptionController(IConfiguration configuration, IWebHostEnvironment environment)
+        public EncryptionController(IConfiguration configuration, IWebHostEnvironment environment,IUserService userService)
         {
             _configuration = configuration;
             _environment = environment;
+            _userService = userService;
         }
 
         [HttpGet("keys")]
+
+       //// [HttpGet("keys")]
+       // public IActionResult GetEncryptionKeys()
+       // {
+       //     try
+       //     {
+       //         var (aesKey, aesIV) = _userService.GetEncryptionKeys();
+
+       //         if (string.IsNullOrEmpty(aesKey) || string.IsNullOrEmpty(aesIV))
+       //         {
+       //             return BadRequest(new { message = "Encryption keys are missing or invalid." });
+       //         }
+
+       //         return Ok(new
+       //         {
+       //             aesKey = aesKey,
+       //             aesIV = aesIV,
+       //             timestamp = DateTime.UtcNow
+       //         });
+       //     }
+       //     catch (Exception ex)
+       //     {
+       //         return StatusCode(500, new { message = "Error retrieving encryption keys", error = ex.Message });
+       //     }
+       // }
+
         public IActionResult GetEncryptionKeys()
         {
             try
