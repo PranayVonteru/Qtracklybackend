@@ -671,6 +671,18 @@ builder.Services.AddCors(options =>
                .AllowCredentials();
     });
 });
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("https://your-firebase-app.web.app")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+//app.UseCors();
+
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
