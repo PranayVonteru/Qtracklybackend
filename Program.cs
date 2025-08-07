@@ -32,17 +32,32 @@ string aesIV = Environment.GetEnvironmentVariable("AES_SECRET_IV") ?? builder.Co
 //               .AllowCredentials();
 //    });
 //});
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(policy =>
-    {
-        policy.WithOrigins("https://your-firebase-app.web.app")
-              .AllowAnyHeader()
-              .AllowAnyMethod();
-    });
-});
+//builder.Services.AddCors(options =>
+//{
+//    options.AddDefaultPolicy(policy =>
+//    {
+//        policy.WithOrigins("https://your-firebase-app.web.app")
+//              .AllowAnyHeader()
+//              .AllowAnyMethod();
+//    });
+//});
 
 //app.UseCors();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin", policy =>
+    {
+        policy.WithOrigins(
+                "https://qtrackley.web.app",           // Your production frontend
+                "http://localhost:5173",               // Development frontend (optional)
+                "http://localhost:3000"                // Development frontend (optional)
+            )
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials();  // Important for authentication
+    });
+});
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
