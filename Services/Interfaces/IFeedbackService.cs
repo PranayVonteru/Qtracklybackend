@@ -1,13 +1,4 @@
-﻿////using Demoproject.Models;
-
-////namespace Demoproject.Services.Interfaces
-////{
-////    public interface IFeedbackService
-////    {
-////        Task SendFeedbackAsync(Feedback feedback);
-////        Task<List<Feedback>> GetFeedbacksForUserAsync(string userId);
-////    }
-////}
+﻿
 
 using Demoproject.Models;
 using System.Collections.Generic;
