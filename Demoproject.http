@@ -1,4 +1,4 @@
-@Demoproject_HostAddress = http://localhost:5181
+@Demoproject_HostAddress = https://qtrackly-awd6egbkg8dbaeex.centralindia-01.azurewebsites.net
 
 GET {{Demoproject_HostAddress}}/weatherforecast/
 Accept: application/json
