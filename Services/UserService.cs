@@ -58,8 +58,13 @@ namespace Demoproject.Services
         {
             return (_encryptionKey, _encryptionIV);
         }
+        
 
-
+        /// <summary>
+        
+        /// </summary>
+        /// <param name="plainText"></param>
+        /// <returns></returns>
 
         #region Encryption Helper Methods
 
