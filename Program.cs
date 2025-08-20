@@ -49,7 +49,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin", policy =>
     {
         policy.WithOrigins(
-                "https://qtrackly-fbf5d.web.app",           // Your production frontend
+                "https://qtrackly-fbf5d-22ea3.web.app",           // Your production frontend
                 "http://localhost:5173",               // Development frontend (optional)
                 "http://localhost:3000"                // Development frontend (optional)
             )
