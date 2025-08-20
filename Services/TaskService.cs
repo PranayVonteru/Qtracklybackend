@@ -147,6 +147,24 @@ namespace Demoproject.Services
             }
         }
 
+        public async Task<object> updateCompleteMainTask(int taskId)
+        {
+            var task = await _context.Tasks.FirstOrDefaultAsync(t => t.Id == taskId);
+            if (task == null)
+            {
+                return new { success = false, message = "Task not found." };
+            }
+
+            task.Status = "In Progress";
+            await _context.SaveChangesAsync();
+
+            return new { success = true, message = "Task updated successfully.", task };
+        }
+
+
+
+
+
         public async Task<bool> CheckSubtaskExistsAsync(int taskId)
         {
             return await _context.SubTasks.AnyAsync(s => s.TaskItemId == taskId);

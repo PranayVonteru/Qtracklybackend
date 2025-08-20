@@ -38,6 +38,25 @@ namespace Demoproject.Controllers
             return userId;
         }
 
+
+
+     [HttpPost("updateCompleteMainTask")]
+    public async Task<IActionResult> UpdateCompleteMainTask([FromQuery] int taskId)
+        {
+            var result = await _taskService.updateCompleteMainTask(taskId);
+
+            if (result != null)
+            {
+                // Return 404 Not Found with message
+                return NotFound(new { status = 404, message = "FAIL TO UPDATE MAIN TASK AS COMPLETED" });
+            }
+            return Ok(result);
+        }
+
+
+
+
+
         [HttpPost]
         public async Task<IActionResult> CreateTask([FromBody] TaskItemCreateDto taskDto)
         {
