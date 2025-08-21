@@ -40,8 +40,8 @@ namespace Demoproject.Controllers
 
 
 
-        [HttpPost("updateCompleteMainTask")]
-        public async Task<IActionResult> UpdateCompleteMainTask([FromQuery] int taskId)
+        [HttpPost("updateCompleteMainTask/{taskId}")]
+        public async Task<IActionResult> UpdateCompleteMainTask(int taskId)
         {
             var result = await _taskService.updateCompleteMainTask(taskId);
 
