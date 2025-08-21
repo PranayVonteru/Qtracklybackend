@@ -157,10 +157,18 @@ namespace Demoproject.Services
                 return new { success = false, message = "Task not found." };
             }
 
-            task.Status = "In Progress";
-            await _context.SaveChangesAsync();
+            // Here, you probably want to set the task as "Completed"
+            task.Status = "Completed";
 
-            return new { success = true, message = "Task updated successfully.", task };
+            try
+            {
+                await _context.SaveChangesAsync();
+                return new { success = true, message = "Main task marked as completed.", task };
+            }
+            catch (Exception ex)
+            {
+                return new { success = false, message = "Failed to update task: " + ex.Message };
+            }
         }
 
 

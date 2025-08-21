@@ -39,22 +39,22 @@ namespace Demoproject.Controllers
         }
 
 
-
         [HttpPost("updateCompleteMainTask/{taskId}")]
         public async Task<IActionResult> UpdateCompleteMainTask(int taskId)
         {
             var result = await _taskService.updateCompleteMainTask(taskId);
 
-            if (result != null)
+            if (result == null)
             {
-                // Return 404 Not Found with message 
-                // hii
+                // Update failed or task not found
                 return NotFound(new { status = 404, message = "FAIL TO UPDATE MAIN TASK AS COMPLETED" });
             }
+
+            // Update succeeded
             return Ok(result);
         }
 
-    
+
 
 
 
