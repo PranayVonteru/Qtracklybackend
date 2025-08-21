@@ -149,27 +149,27 @@ namespace Demoproject.Services
             }
         }
 
-        public async Task<object> updateCompleteMainTask(int taskId)
-        {
-            var task = await _context.Tasks.FirstOrDefaultAsync(t => t.Id == taskId);
-            if (task == null)
-            {
-                return new { success = false, message = "Task not found." };
-            }
+        //public async Task<object> updateCompleteMainTask(int taskId)
+        //{
+        //    var task = await _context.Tasks.FirstOrDefaultAsync(t => t.Id == taskId);
+        //    if (task == null)
+        //    {
+        //        return new { success = false, message = "Task not found." };
+        //    }
 
-            // Here, you probably want to set the task as "Completed"
-            task.Status = "Completed";
+        //    // Here, you probably want to set the task as "Completed"
+        //    task.Status = "Completed";
 
-            try
-            {
-                await _context.SaveChangesAsync();
-                return new { success = true, message = "Main task marked as completed.", task };
-            }
-            catch (Exception ex)
-            {
-                return new { success = false, message = "Failed to update task: " + ex.Message };
-            }
-        }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //        return new { success = true, message = "Main task marked as completed.", task };
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return new { success = false, message = "Failed to update task: " + ex.Message };
+        //    }
+        //}
 
 
 

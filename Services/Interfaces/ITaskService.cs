@@ -17,7 +17,7 @@ namespace Demoproject.Services.Interfaces
         Task<List<TaskDependencyDto>> GetTaskDependenciesUserAsync(int id, string userId);
         Task<PaginatedResult<TaskItemDto>> GetAllTasksGlobalAsync(int pageNumber = 1, int pageSize = 10);
         Task<List<TaskItemDto>> GetAllTasksforPerformanceGlobalAsync();
-        Task<Object> updateCompleteMainTask(int TaskId);
+        //Task<Object> updateCompleteMainTask(int TaskId);
 
         Task<(TaskItem, string)> UpdateTaskWorkedHoursAsync(TaskWorkedHoursUpdateDto dto, string userId);
         //Task<PaginatedResult<TaskItemDto>> GetAllTasksAsync(string userId, int pageNumber = 1, int pageSize = 5);
