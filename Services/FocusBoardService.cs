@@ -33,7 +33,7 @@ namespace Demoproject.Services
             _logger.LogInformation("Fetching today's focus tasks for user {UserId} on {Today}", userId, today);
 
             var userTasks = await _dbContext.Tasks
-                .Where(t => t.StartDate.Date <= today && t.DueDate.Date >= today && t.CreatedBy == userId && t.Status == "In Progress")
+                .Where(t => t.StartDate.Date <= today && t.DueDate.Date >= today && t.CreatedBy == userId && t.Status != "Completed")
                 .ToListAsync();
 
             _logger.LogInformation("Found {Count} tasks: {Tasks}", userTasks.Count,
