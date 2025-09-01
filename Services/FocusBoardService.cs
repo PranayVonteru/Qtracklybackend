@@ -33,7 +33,7 @@ namespace Demoproject.Services
             _logger.LogInformation("Fetching today's focus tasks for user {UserId} on {Today}", userId, today);
 
             var userTasks = await _dbContext.Tasks
-                .Where(t => t.StartDate.Date <= today && t.DueDate.Date >= today && t.CreatedBy == userId && t.Status != "Completed")
+                .Where(t => t.StartDate.Date <= today && t.DueDate.Date >= today && t.CreatedBy == userId && t.Status == "In Progress")
                 .ToListAsync();
 
             _logger.LogInformation("Found {Count} tasks: {Tasks}", userTasks.Count,
@@ -50,7 +50,7 @@ namespace Demoproject.Services
             _logger.LogInformation("Fetching overdue tasks for user {UserId} on {Today}", userId, today);
 
             var userTasks = await _dbContext.Tasks
-                .Where(t => t.DueDate.Date < today && t.CreatedBy == userId && t.Status == "In Progress")
+                .Where(t => t.DueDate.Date < today && t.CreatedBy == userId && t.Status != "Completed")
                 .ToListAsync();
 
             _logger.LogInformation("Found {Count} overdue tasks: {Tasks}", userTasks.Count,
@@ -146,7 +146,7 @@ namespace Demoproject.Services
                 .CountAsync();
 
             var Overdue = await _dbContext.Tasks
-                .Where(t => t.DueDate.Date < today && t.CreatedBy == userId && t.Status == "In Progress")
+                .Where(t => t.DueDate.Date < today && t.CreatedBy == userId && t.Status != "Completed")
                 .CountAsync();
 
             var result = await _dbContext.Tasks
