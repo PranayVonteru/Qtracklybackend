@@ -5,6 +5,7 @@ using Demoproject.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.ComponentModel;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -69,6 +70,16 @@ namespace Demoproject.Controllers
                 return StatusCode(500, new { message = "Failed to create dependency.", error = ex.Message });
             }
         }
+        [HttpGet("DependencyRequestsCount")]
+        public async Task<int> GetDependencyRequestCount()
+        {
+            // Assuming you have access to the current user's ID (e.g., from claims or context)
+            string userId = GetCurrentUserId(); // Replace with actual logic to get user ID
+
+            var count = await _dependencyService.GetDependencyRequestCount(userId);
+            return count;
+        }
+
 
 
 

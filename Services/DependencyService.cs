@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.Xml;
 using System.Threading.Tasks;
 
 namespace Demoproject.Services
@@ -51,6 +52,17 @@ namespace Demoproject.Services
 
             return (dependency, "Dependency added successfully.");
         }
+
+
+       public async  Task<int> GetDependencyRequestCount(string userid)
+        {
+            var count =  await _dbContext.DependencyFacts
+                .Where(u => u.TargetUserId == userid && u.Status=="Pending")
+                .CountAsync();
+
+            return count;
+        }
+
 
         public async Task<string> DeleteDependencyAsync(int id, string userId)
         {

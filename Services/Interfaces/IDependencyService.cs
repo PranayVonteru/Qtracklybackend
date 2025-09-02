@@ -15,6 +15,7 @@ namespace Demoproject.Services.Interfaces
         Task<Object> UserviewTaskDependent(int id);
         Task<Object> UserviewTaskDependenciesAccepted(int id);
         Task<Object> RejectDependency(int DependencyTaskId );
+        Task<int> GetDependencyRequestCount(string userid);
 
     }
 }
